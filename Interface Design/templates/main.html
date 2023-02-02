@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    form {
+      margin: auto;
+      width: 35%;
+    }
+    .result {
+      margin: auto;
+      width: 35%;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <head>
+    <title>Predict Emotions</title>
+  </head>
+  <form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+      <legend>Input values:</legend>
+      Sentiment Text:
+      <input name="text" type="text" required />
+      <br />
+      <input type="submit" />
+    </fieldset>
+  </form>
+  <br />
+  <div class="result" align="center">
+    <b>Input text: </b> {{ original_input }}
+    <br />
+    <br />
+    Predicted emotion:
+    <p style="font-size: 30px">{{ result }}</p>
+  </div>
+</html>
