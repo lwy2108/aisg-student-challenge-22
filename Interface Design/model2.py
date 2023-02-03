@@ -1,6 +1,7 @@
 import flask
 import pickle
 from statistics import mode
+from functions import textPreprocessor
 
 from sgnlp.models.emotion_entailment import (
     RecconEmotionEntailmentConfig,
@@ -73,14 +74,18 @@ def main():
         p4 = flask.request.form['p4']
         p5 = flask.request.form['p5']
        
-        prediction1 = model.predict([p1])[0]
-        prediction2 = model.predict([p2])[0]
-        prediction3 = model.predict([p3])[0]
-        prediction4 = model.predict([p4])[0]
-        prediction5 = model.predict([p5])[0]
-
         inputText = [p1,p2,p3,p4,p5]
-        theList = [prediction1,prediction2, prediction3, prediction4, prediction5]
+        theList = []
+        for text in inputText:
+            theList.append(model.predict([textPreprocessor(text)])[0])
+        # prediction1 = model.predict([textPreprocessor(p1)])[0]
+        # prediction2 = model.predict([textPreprocessor(p2)])[0]
+        # prediction3 = model.predict([p3])[0]
+        # prediction4 = model.predict([p4])[0]
+        # prediction5 = model.predict([p5])[0]
+
+
+        # theList = [prediction1,prediction2, prediction3, prediction4, prediction5]
 
 
         list2 = []
