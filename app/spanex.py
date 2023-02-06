@@ -12,7 +12,7 @@ tokenizer = RecconSpanExtractionTokenizer.from_pretrained(
     "mrm8488/spanbert-finetuned-squadv2"
 )
 model = RecconSpanExtractionModel.from_pretrained(
-    "spanex.bin",
+    "https://storage.googleapis.com/sgnlp/models/reccon_span_extraction/pytorch_model.bin",
     config=config,
 )
 preprocessor = RecconSpanExtractionPreprocessor(tokenizer)
